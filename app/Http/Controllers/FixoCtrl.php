@@ -45,7 +45,7 @@ class FixoCtrl extends Controller
                 }
             return redirect()->route("ContaFixa",["id"=>$id]);
             }catch(Exception $e){
-
+ 
             }
         }
         
