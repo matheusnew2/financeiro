@@ -5,7 +5,7 @@ Listagem de contas fixas
 @section('content')
 <div class="container-fluid">
     
-        <form method="POST" action="{{asset('CadastrarContaFixa')}}">
+        <form method="POST" action="{{asset('ContaFixa')}}">
             @csrf
             @if(isset($result))
                 @if(($result->id_fixo) !== NULL)

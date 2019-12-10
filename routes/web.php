@@ -16,10 +16,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/dashboard', "DashboardCtrl@index");
-Route::get('/lancamento', "LancamentoCtrl@index");
+
+Route::get('/lancamento/{id?}', "LancamentoCtrl@carregar")->name('lancamento');
+Route::post('/lancamento', "LancamentoCtrl@cadastrar");
+
 Route::get('/ListaContaFixa', "FixoCtrl@index");
 
-Route::get('/ContaFixa/{id?}', "FixoCtrl@cadastrar")->name('ContaFixa');
-
-Route::post('/CadastrarContaFixa', "FixoCtrl@cadastrar");
+Route::get('/ContaFixa/{id?}', "FixoCtrl@carregar")->name('ContaFixa');
+Route::post('/ContaFixa', "FixoCtrl@cadastrar");
 
