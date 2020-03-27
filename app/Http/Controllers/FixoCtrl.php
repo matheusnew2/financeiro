@@ -9,7 +9,7 @@ class FixoCtrl extends Controller
     public function index(){
         $fixo = new FixoModel();
         $contas = $fixo::paginate(20);
-        return view("fixo.Listafixo",compact('contas'));
+        return view("fixo.listaFixo",compact('contas'));
     }
     
     public function cadastrar(Request $request,$id = ""){
@@ -42,6 +42,8 @@ class FixoCtrl extends Controller
     }
     
     public function carregar($id = ""){
+        $mensagem = "";
+        $result = NULL;
         if($id != ""){
             $fixo = new FixoModel();
             $result = $fixo->find($id);

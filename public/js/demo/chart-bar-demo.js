@@ -27,26 +27,28 @@ function number_format(number, decimals, dec_point, thousands_sep) {
   return s.join(dec);
 }
 
-// Bar Chart Example
-var ctx = document.getElementById("myBarChart");
+function graficoBar(lucro,despesa,id){
+
+    // Pie Chart Example
+    var ctx = document.getElementById("myBarChart"+id);
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["Lucro", "Despesa"],
     datasets: [{
-      label: "Revenue",
-      backgroundColor: "#4e73df",
+      label: "Valor",
+      backgroundColor: ['#25d600','#de0000'],
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [lucro,despesa]
     }],
   },
   options: {
     maintainAspectRatio: false,
     layout: {
       padding: {
-        left: 10,
-        right: 25,
+        left: 5,
+        right: 5,
         top: 25,
         bottom: 0
       }
@@ -57,7 +59,7 @@ var myBarChart = new Chart(ctx, {
           unit: 'month'
         },
         gridLines: {
-          display: false,
+          display: true,
           drawBorder: false
         },
         ticks: {
@@ -68,7 +70,7 @@ var myBarChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 3000,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
@@ -96,8 +98,8 @@ var myBarChart = new Chart(ctx, {
       bodyFontColor: "#858796",
       borderColor: '#dddfeb',
       borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
+      xPadding: 5,
+      yPadding: 5,
       displayColors: false,
       caretPadding: 10,
       callbacks: {
@@ -109,3 +111,4 @@ var myBarChart = new Chart(ctx, {
     },
   }
 });
+}

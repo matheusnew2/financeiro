@@ -5,7 +5,7 @@ Listagem de contas fixas
 @section('content')
 <div class="container-fluid">
     
-        <form method="POST" action="{{asset('ContaFixa')}}">
+    <form method="POST" action="{{asset('ContaFixa')}}" class="form-group">
             @csrf
             @if(isset($result))
                 @if(($result->id_fixo) !== NULL)
@@ -13,18 +13,20 @@ Listagem de contas fixas
                 @endif
             @endif
             <div class="row">
-                <div class="form-group col-sm-12">
-                    <label for="nome">Nome</label>
-                    <input type="text" name="nome" id="nome" value="@if(isset($result->nome)){{$result->nome}} @endif" required class="form-control">
-                </div>
-                <div class="form-group col-sm-3">
-                    <label for="valor">Valor</label>
-                    <input type="text" name="valor" id="valor" value="@if(isset($result->valor)){{$result->valor}} @endif" class="form-control">
-                </div>
-                <div class="col-sm-12">
-                    <input type="submit" class="btn btn-success">
-                    <input type="button" onclick="window.location.href='{{asset('ListaContaFixa')}}'" value="Voltar" class="btn btn-danger">
+                <div class="col-sm-6">
+                    <div class="form-group col-sm-12">
+                        <label for="nome">Nome</label>
+                        <input type="text" name="nome" id="nome" value="@if(isset($result->nome)){{$result->nome}} @endif" required class="form-control">
+                    </div>
+                    <div class="form-group col-sm-5">
+                        <label for="valor">Valor</label>
+                        <input type="text" name="valor" id="valor" value="@if(isset($result->valor)){{$result->valor}} @endif" class="form-control">
+                    </div>
+                    <div class="col-sm-12">
+                        <input type="submit" class="btn btn-success">
+                        <input type="button" onclick="window.location.href='{{asset('ListaContaFixa')}}'" value="Voltar" class="btn btn-danger">
 
+                    </div>
                 </div>
             </div>
 

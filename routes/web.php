@@ -11,17 +11,27 @@
 |
 */
 
-Route::get('/', function () {
-    
-    return view('welcome');
-});
+Route::get('/', "DashboardCtrl@index")->name("/")->middleware('autenticar');
 Route::get('/dashboard', "DashboardCtrl@index");
 
-Route::get('/lancamento/{id?}', "LancamentoCtrl@carregar")->name('lancamento');
-Route::post('/lancamento', "LancamentoCtrl@cadastrar");
+Route::get('/Movimentacao/{id?}', "MovimentacaoCtrl@carregar")->name('movimentacao')->middleware('autenticar');
+Route::get('/ListaMovimentacao', "MovimentacaoCtrl@lista")->middleware('autenticar');
+Route::post('/Movimentacao', "MovimentacaoCtrl@cadastrar")->middleware('autenticar');
+Route::post('/Movimentacao/Cancelar/{id?}', "MovimentacaoCtrl@cancelar")->middleware('autenticar');
 
-Route::get('/ListaContaFixa', "FixoCtrl@index");
+Route::get('/ListaContaFixa', "FixoCtrl@index")->middleware('autenticar');
 
-Route::get('/ContaFixa/{id?}', "FixoCtrl@carregar")->name('ContaFixa');
-Route::post('/ContaFixa', "FixoCtrl@cadastrar");
+Route::get('/ContaFixa/{id?}', "FixoCtrl@carregar")->name('ContaFixa')->middleware('autenticar');
+Route::post('/ContaFixa', "FixoCtrl@cadastrar")->middleware('autenticar');
+
+Route::get('/Extrato', "ExtratoCtrl@index")->middleware('autenticar');
+Route::post('/Extrato', "ExtratoCtrl@relatorio")->middleware('autenticar');
+
+
+Route::get('/Conta/{id?}', "ContaCtrl@carregar")->name('Conta')->middleware('autenticar');
+Route::post('/Conta', "ContaCtrl@cadastrar")->middleware('autenticar');
+Route::get('/ListaConta', "ContaCtrl@lista")->middleware('autenticar');
+
+Route::post('/logar', "LoginCtrl@logar");
+Route::get('/login', "LoginCtrl@index");
 
